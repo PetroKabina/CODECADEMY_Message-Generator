@@ -6,3 +6,10 @@ This is a Codecademy portfolio project that is intended for:
 * Using Git version control
 * Using command line
 * Developing locally, Codecademy offshore
+# Features
+1. Stores words databest to serve as a basis for message generation
+2. Generates random messages based on the following topics:
+* Topic 1
+* Topic 2
+* Topic 3
+* Topic 4
