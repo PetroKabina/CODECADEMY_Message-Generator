@@ -20,7 +20,6 @@ Please select topic:
 1. Rock music
 2. Sport motivation
 3. Random nonsense
-2
 ```
 
 Repetition times:
@@ -32,7 +31,7 @@ Please enter repetition times to see a desired number of generated sentences:
 Final output:
 ```
 Generated sentences:
-* If a healthy sportsman runs then he ragingly faces sthrengths
+* If a healthy sportsman runs then he ragingly faces strengths
 * When a nervous pain enters then she healthy joggs hills
 * Whatever an unhealthy food appears then he simply struggles days
 ```
@@ -44,7 +43,7 @@ Want some more? Press 'y' to start over or 'n' to exit! [y/n]:
 
 Message structure is complex - it uses one main independent clause and one subordinate clause.
 General pattern for messages generated is as follows:
->**Main cl.: (*conj. + article + adj. + s. obj. noun + v.*)) + (Sub. cl.:(*conj. + s. subj. noun + adv. + v. + pl. obj. noun*))**
+```**(Main cl.: (*conj. + article + adj. + s. obj. noun + v.*)) + (Sub. cl.:(*conj. + s. subj. noun + adv. + v. + pl. obj. noun*))**```
 
 **Example**: _When a happy atom splits than it simply releases neutrons._ (don't search any sense in this sentence, this is just for an example :) )
 - **Main clause**: "_When a happy atom splits_"
@@ -82,3 +81,5 @@ For this project, you will build a **message generator program**. **Every time a
 1. JavaScript
 2. Git and GitHub
 3. Command line
+## Useful links
+[University of Bristol. Complex sentences.](https://www.bristol.ac.uk/academic-language/media/BEAP/3.4/index.html#:~:text=A%20complex%20sentence%20is%20made,indicating%20sophisticated%20connections%20between%20ideas.)
