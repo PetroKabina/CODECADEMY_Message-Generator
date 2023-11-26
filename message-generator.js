@@ -92,29 +92,40 @@ const randWordSelector = (wordsArr) => {
     return wordsArr[randWordId];
 }
 
-const msgPartForm = (section)  => {
+// formats words depending on their position and returns a message part as a string
+const msgPartForm = (section, part)  => {
 msgPart = section.map((word, index) => {
     let len = section.length;
+    // initial format for a word
     word = word.toLowerCase();
-    if (index === 0 ) {
-        word = word.toUpperCase();
-    //    console.log(word[0]);
-        word = word + ' ';
-        } else if (index > 0 && index < len) {
-        word = word + ' ';
-        } else if (index === len - 1) {
+    // format word up to its position in sentence
+    // first letter of the sentence is uppercase
+    if (index === 0 && part === 'beginning') {
+        word = word[0].toUpperCase() + word.slice(1);
+    };
+    // add a space between the words
+    if ( ( index > 0 && index < len || index != len - 1 ) && word != '') {
+        word = ' ' + word;
+    };
+    // add punctuation
+    if ( index === len - 1 && part === 'end' ) {
         word = word + '.';
-        }
-        return word;
+    } else if ( index === len - 1 && part != 'end' ) {
+        word = word + ',';
+    };
+
+    return word;
     });
+
+    // transform an array of words to a string
     msgPart = msgPart.join('').toString();
     return msgPart;
 }
 
+// selects word object using a random selector
 const wordObj = (lib, wordType, topic) => {
     //console.log(lib.wordType.topic)
-    topic = 'common';
-    selector = lib.wordType.topic;
+    selector = lib[wordType][topic];
     return {
         type: wordType,
         content: randWordSelector(selector)
@@ -124,39 +135,41 @@ const wordObj = (lib, wordType, topic) => {
 // gets topic and repetition time and returns message(s)
 // default repetition time is 1
 // default topic is "3. Random nonsense"
-const messageGenerator = (lib, topic = 'sports', repTime = 1) => {
-    
-    // define message elements
-    let mainConj_1                = wordObj(lib, 'mainConjs', 'common')
-    let mainArt_1                 = wordObj(lib, 'articles', 'common')
-    let mainAdj_1                 = wordObj(lib, 'adj', topic)
-    let mainObjNoun_1             = wordObj(lib, 'nouns', topic)
-    let mainVrb_1                 = wordObj(lib, 'verbs', topic)
-    let subClconj_1               = wordObj(lib, 'subConjs', 'common')
-    let subClSubjNoun_1           = wordObj(lib, 'nouns', topic)
-    let subClAdv1                 = wordObj(lib, 'adv', topic)
-    let subClVrb1                 = wordObj(lib, 'verbs', topic)
-    let subClObjNoun              = wordObj(lib, 'nouns', topic)
+const messageGenerator = (lib, topic, repTimes) => {
+    for ( let i=0; i < repTimes; i++) {
+        // define message elements
+        let mainConj_1                = wordObj(lib, 'mainConjs', 'common')
+        let mainArt_1                 = wordObj(lib, 'articles', 'common')
+        let mainAdj_1                 = wordObj(lib, 'adj', topic)
+        let mainObjNoun_1             = wordObj(lib, 'nouns', topic)
+        let mainVrb_1                 = wordObj(lib, 'verbs', topic)
+        let subClconj_1               = wordObj(lib, 'subConjs', 'common')
+        let subClSubjNoun_1           = wordObj(lib, 'nouns', topic)
+        let subClAdv1                 = wordObj(lib, 'adv', topic)
+        let subClVrb1                 = wordObj(lib, 'verbs', topic)
+        let subClObjNoun              = wordObj(lib, 'nouns', topic)
 
-    // define message structure
-    const mainPart                = [ mainConj_1.content, mainArt_1.content, mainAdj_1.content, mainObjNoun_1.content, mainVrb_1.content ];
-    const subPart                 = [ subClconj_1.content, subClSubjNoun_1.content, subClAdv1.content, subClVrb1.content, subClObjNoun.content ];    
-    let message                   = { mainPart, subPart };
+        // define message structure
+        const mainPart                = [ mainConj_1.content, mainArt_1.content, mainAdj_1.content, mainObjNoun_1.content, mainVrb_1.content ];
+        const subPart                 = [ subClconj_1.content, subClSubjNoun_1.content, subClAdv1.content, subClVrb1.content, subClObjNoun.content ];    
+        let message                   = { mainPart, subPart };
 
-    console.log(message)
-    
-    //format message
-    message = {
-        mainPart: msgPartForm(message.mainPart), 
-        subPart: msgPartForm(message.subPart)
-    };
+        //console.log(message)
         
-    return message.mainPart + message.subPart;
+        //format message
+        let messageToDisplay = {
+            mainPart: msgPartForm(message.mainPart, 'beginning'), 
+            subPart: msgPartForm(message.subPart, 'end')
+        };
+            
+        console.log ( messageToDisplay.mainPart + messageToDisplay.subPart);
+    }
 }
 
-console.log(wordObj(wordsLib, 'mainConjs', 'common'))
+//console.log(wordObj(wordsLib, 'mainConjs', 'common'))
 
-//console.log(messageGenerator(wordsLib));
+/* FUNCTIONS TEST SECTION */
+messageGenerator(wordsLib, 'sports', 10);
 
 /* USER INTERACTION */
 /*const readline = require('readline').createInterface({
