@@ -122,7 +122,7 @@ msgPart = section.map((word, index) => {
     return msgPart;
 }
 
-// selects word object using a random selector
+// returns a word as an object using a random selector
 const wordObj = (lib, wordType, topic) => {
     //console.log(lib.wordType.topic)
     selector = lib[wordType][topic];
