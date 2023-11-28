@@ -1,20 +1,15 @@
 // WORDS LIBRARY
+// genarated using https://chat.openai.com/
 const wordsLib = {
-    mainConjs : 
+    common : 
         {
-            common:
-            [
-                'after', 'although', 'as', 'because',
-                'before', 'even though', 'if', 'once',
-                'since', 'so long as', 'though', 'unless',
-                'until', 'when', 'whenever', 'whereas', 
-                'wherever', 'while'
+            mainConjugations: [
+                'and', 'but', 'for', 'nor', 'or',
+                'so', 'yet', 'after', 'although', 'as',
+                'because', 'before', 'if', 'since', 'though',
+                'unless', 'until', 'when', 'while'
             ],
-        },
-    subConjs : 
-        {
-            common:
-            [
+            subsidiaryConjugations : [
                 'after', 'although', 'as', 'as if',
                 'as long as', 'as much as', 'as soon as', 'as though',
                 'because', 'before', 'by the time', 'even if',
@@ -25,15 +20,13 @@ const wordsLib = {
                 'though', 'till', 'unless', 'until',
                 'when', 'whenever', 'where', 'whereas',
                 'wherever', 'whether or not', 'while'
-            ],},
-    articles : 
-        {
-            common:
-            [
+            ],
+            articles : [
                 'a', 'an', 'the', ''
-            ],},
-    adj : {
-        sports : [
+            ],
+        },
+    sports : {
+        adjectives: [
             'Adrenaline-pumping', 'Competitive', 'Fast-paced', 'Exciting', 'Fun',
             'Intense', 'Relaxing', 'Rewarding', 'Social', 'Stressful',
             'Team-oriented', 'Thrilling', 'Unique', 'Difficult', 'Intimidating',
@@ -43,47 +36,146 @@ const wordsLib = {
             'Active', 'Agile', 'Athletic', 'Bold', 'Brave',
             'Daring', 'Energetic', 'Fearless', 'Fit', 'Hardworking',
             'Honest', 'Intense', 'Passionate', 'Persistent', 'Strong'
-            ],
-        },
-    verbs : {
-        sports : [
-            'Catch up', 'Cool down', 'Give up',
-            'Join in', 'Knock out', 'Take up',
-            'Try out for', 'Work on', 'Warm up', 
-            'Work out' 
-        ]
-        },
-    nouns : {
-        sports : [
-            'sportscaster', 'sportsmanship', 'stadium', 'strike', 'teammate',
-            'tennis court', 'tie', 'time-out', 'touchdown', 'tournament',
-            'track and field', 'trainer', 'trophy', 'umpire', 'underdog',
-            'hat trick', 'hockey', 'home plate', 'home run', 'infield',
-            'inning', 'jump shot', 'kickoff', 'lay up', 'league',
-            'locker room', 'offense', 'opponent', 'outfield', 'penalty',
-            'pitcher', 'pro', 'preseason', 'puck', 'quarterback',
-            'recreational', 'referee', 'score', 'score', 'scoreboard',
-            'semifinal', 'serve', 'singles', 'soccer', 'spectator sport',
-            'amateur', 'arena', 'athletic', 'backboard', 'backhand',
-            'batter', 'baseball', 'basketball', 'bench', 'catcher',
-            'champion', 'championship', 'coach', 'competitive', 'defense',
-            'doubles', 'dribble', 'dugout', 'fan', 'field goal',
-            'finish line', 'football', 'forehand', 'free throw', 'goal',
-            'goal line', 'goalkeeper', 'goalpost', 'grand slam', 'half time'
-        ]
+        ],
+        adverbs: [
+            'Admirably', 'Aggressively', 'Briskly', 'Cautiously', 'Competitively',
+            'Confidently', 'Eagerly', 'Efficiently', 'Fairly', 'Fiercely',
+            'Gracefully', 'Loudly', 'Proudly', 'Quickly', 'Relentlessly',
+            'Swiftly', 'Vigorously', 'Boldly', 'Determinedly', 'Enthusiastically',
+            'Intensely', 'Passionately', 'Steadily', 'Strategically', 'Tirelessly',
+            'Toughly', 'Vividly', 'Wholeheartedly', 'Zealously', 'Agilely',
+            'Cleverly', 'Diligently', 'Effectively', 'Firmly', 'Heartily',
+            'Mightily', 'Nimbly', 'Readily', 'Robustly', 'Skillfully',
+            'Stoutly', 'Valiantly', 'Vividly', 'Willingly', 'Worthily',
+            'Zestfully', 'Bravely', 'Decisively', 'Industriously', 'Persistently'
+        ],
+        nouns : [
+            'Sportscaster', 'Sportsmanship', 'Stadium', 'Strike', 'Teammate',
+            'Tennis court', 'Tie', 'Time-out', 'Touchdown', 'Tournament',
+            'Track and field', 'Trainer', 'Trophy', 'Umpire', 'Underdog',
+            'Hat trick', 'Hockey', 'Home plate', 'Home run', 'Infield',
+            'Inning', 'Jump shot', 'Kickoff', 'Lay up', 'League',
+            'Locker room', 'Offense', 'Opponent', 'Outfield', 'Penalty',
+            'Pitcher', 'Pro', 'Preseason', 'Puck', 'Quarterback',
+            'Recreational', 'Referee', 'Score', 'Scoreboard', 'Semifinal',
+            'Serve', 'Singles', 'Soccer', 'Spectator sport', 'Amateur',
+            'Arena', 'Athletic', 'Backboard', 'Backhand', 'Batter'
+        ],
+        verbs: [
+            'Compete', 'Train', 'Strive', 'Struggle', 'Achieve',
+            'Endure', 'Exceed', 'Outperform', 'Score', 'Succeed',
+            'Surpass', 'Perform', 'Participate', 'Fight', 'Win',
+            'Play', 'Practice', 'Improve', 'Master', 'Challenge',
+            'Push', 'Progress', 'Excel', 'Conquer', 'Race',
+            'Endeavor', 'Contribute', 'Surge', 'Race', 'Push through',
+            'Advance', 'Outplay', 'Outlast', 'Overcome', 'Breakthrough',
+            'Outshine', 'Outpace', 'Outdo', 'Outrun', 'Outfight',
+            'Strategize', 'Lead', 'Support', 'Tackle', 'Defend',
+            'Attack', 'Dominate', 'Motivate', 'Inspire', 'Perform'
+        ],
     },
-    adv : {
-        sports : [
-            'super', 'good', 'sheer', 'rough', 'fine',
-            'solo', 'deadly', 'pro', 'clean', 'bad',
-            'real', 'better', 'best', 'fair', 'within',
-            'wild', 'loud', 'through', 'decent', 'each',
-            'big', 'pretty', 'new', 'between', 'daily',
-            'outside', 'little', 'true' 
-        ] 
+    rock: {
+        adjectives: [
+            'Loud', 'Energetic', 'Gritty', 'Raw', 'Powerful',
+            'Edgy', 'Dynamic', 'Melodic', 'Legendary', 'Iconic',
+            'Soulful', 'Aggressive', 'Innovative', 'Fierce', 'Rebellious',
+            'Intense', 'Electrifying', 'Bold', 'Revolutionary', 'Passionate',
+            'Vibrant', 'Explosive', 'Distinctive', 'Fiery', 'Bluesy',
+            'Raucous', 'Expressive', 'Anthemic', 'Captivating', 'Thrilling',
+            'Riff-driven', 'Searing', 'Pounding', 'Hypnotic', 'Unforgettable',
+            'Searing', 'Provocative', 'Sonic', 'Raucous', 'Funky',
+            'Swaggering', 'Punchy', 'Uncompromising', 'Amped-up', 'Blistering',
+            'Daring', 'Charismatic', 'Intoxicating', 'Hard-hitting', 'Melancholic'
+        ],
+        adverbs : [
+            'Loud', 'Energetic', 'Gritty', 'Raw', 'Powerful',
+            'Edgy', 'Dynamic', 'Melodic', 'Legendary', 'Iconic',
+            'Soulful', 'Aggressive', 'Innovative', 'Fierce', 'Rebellious',
+            'Intense', 'Electrifying', 'Bold', 'Revolutionary', 'Passionate',
+            'Vibrant', 'Explosive', 'Distinctive', 'Fiery', 'Bluesy',
+            'Raucous', 'Expressive', 'Anthemic', 'Captivating', 'Thrilling',
+            'Riff-driven', 'Searing', 'Pounding', 'Hypnotic', 'Unforgettable',
+            'Searing', 'Provocative', 'Sonic', 'Raucous', 'Funky',
+            'Swaggering', 'Punchy', 'Uncompromising', 'Amped-up', 'Blistering',
+            'Daring', 'Charismatic', 'Intoxicating', 'Hard-hitting', 'Melancholic'
+        ],
+        nouns : [
+            'Guitar', 'Drums', 'Vocals', 'Bass', 'Stage',
+            'Crowd', 'Concert', 'Amplifier', 'Sound', 'Music',
+            'Performance', 'Riff', 'Chorus', 'Melody', 'Beat',
+            'Energy', 'Singer', 'Audience', 'Headliner', 'Festival',
+            'Musician', 'Song', 'Show', 'Electricity', 'Pulse',
+            'Thrill', 'Harmony', 'Tempo', 'Crowd-surfing', 'Mosh pit',
+            'Venue', 'Reverb', 'Solo', 'Loudness', 'Performance',
+            'Rockstar', 'Stage dive', 'Encore', 'Gig', 'Lyrics',
+            'Bassline', 'Drumstick', 'Pick', 'Playlist', 'Chord',
+            'Distortion', 'Vibe', 'Groove', 'Amplification', 'Feedback'
+        ],
+        verbs : [
+            'Rock', 'Jam', 'Shred', 'Erupt', 'Pulsate',
+            'Thunder', 'Roar', 'Thrash', 'Crunch', 'Resonate',
+            'Explode', 'Revv', 'Vibrate', 'Rage', 'Sizzle',
+            'Groove', 'Scream', 'Blaze', 'Pound', 'Charge',
+            'Fuse', 'Electrify', 'Reverberate', 'Stomp', 'Rip',
+            'Blast', 'Strum', 'Echo', 'Rumble', 'Surge',
+            'Crescendo', 'Ferment', 'Amp', 'Riff', 'Crank',
+            'Explode', 'Intensify', 'Quake', 'Revitalize', 'Unleash',
+            'Jolt', 'Propel', 'Galvanize', 'Overdrive', 'Melt',
+            'Shatter', 'Energize', 'Tremor', 'Echo', 'Resonate'
+        ],
     },
+    randomWords: {
+        adjectives: [
+            'Beautiful', 'Brave', 'Bright', 'Calm', 'Charming',
+            'Cheerful', 'Clever', 'Confident', 'Cozy', 'Creative',
+            'Cute', 'Dazzling', 'Delightful', 'Elegant', 'Enchanting',
+            'Exciting', 'Fantastic', 'Friendly', 'Funny', 'Glamorous',
+            'Gorgeous', 'Graceful', 'Happy', 'Healthy', 'Hopeful',
+            'Incredible', 'Joyful', 'Kind', 'Lovely', 'Lucky',
+            'Magical', 'Marvelous', 'Modern', 'Nice', 'Optimistic',
+            'Perfect', 'Playful', 'Positive', 'Powerful', 'Pretty',
+            'Radiant', 'Relaxed', 'Smart', 'Successful', 'Sunny',
+            'Super', 'Sweet', 'Talented', 'Thankful', 'Unique'
+        ],
+        adverbs: [
+            'Randomly', 'Quickly', 'Slowly', 'Swiftly', 'Carefully',
+            'Unexpectedly', 'Smoothly', 'Effortlessly', 'Steadily', 'Quietly',
+            'Loudly', 'Frequently', 'Rarely', 'Regularly', 'Happily',
+            'Sadly', 'Briskly', 'Eagerly', 'Angrily', 'Patiently',
+            'Generously', 'Cautiously', 'Vigorously', 'Gracefully', 'Enthusiastically',
+            'Seriously', 'Safely', 'Freely', 'Honestly', 'Naturally',
+            'Pleasantly', 'Roughly', 'Politely', 'Correctly', 'Incorrectly',
+            'Perfectly', 'Hastily', 'Gently', 'Hungrily', 'Thirstily',
+            'Joyfully', 'Beautifully', 'Powerfully', 'Reluctantly', 'Sensibly',
+            'Wisely', 'Cleverly', 'Carelessly', 'Curiously', 'Optimistically'
+        ],
+        nouns: [
+            'Dog', 'Cat', 'Book', 'House', 'Tree',
+            'Car', 'City', 'Country', 'River', 'Mountain',
+            'Ocean', 'Beach', 'School', 'Teacher', 'Student',
+            'Doctor', 'Hospital', 'Music', 'Movie', 'Art',
+            'Science', 'Technology', 'Food', 'Drink', 'Friend',
+            'Family', 'Love', 'Time', 'Money', 'Job',
+            'Dream', 'Success', 'Failure', 'Happiness', 'Sadness',
+            'Fear', 'Hope', 'Future', 'Past', 'Present',
+            'Nature', 'Life', 'Death', 'Game', 'Sport',
+            'adverbsenture', 'Journey', 'Memory', 'Knowledge', 'Wisdom'
+        ],
+        verbs: [
+            'Run', 'Jump', 'Play', 'Sing', 'Dance',
+            'Think', 'Write', 'Read', 'Eat', 'Sleep',
+            'Walk', 'Talk', 'Swim', 'Fly', 'Cook',
+            'Drive', 'Study', 'Teach', 'Learn', 'Work',
+            'Create', 'Destroy', 'Build', 'Destroy', 'Laugh',
+            'Cry', 'Smile', 'Feel', 'Touch', 'Move',
+            'Stay', 'Leave', 'Join', 'Quit', 'Win',
+            'Lose', 'Fall', 'Rise', 'Drop', 'Catch',
+            'Understand', 'Imagine', 'Believe', 'Succeed', 'Fail',
+            'Change', 'Grow', 'Remember', 'Forget', 'Give'
+        ],
+        },
+    };
 
-}
 
 /* FUNCTIONS SECTION */
 // gets array and returns a random element from this array
@@ -123,9 +215,9 @@ msgPart = section.map((word, index) => {
 }
 
 // selects word object using a random selector
-const wordObj = (lib, wordType, topic) => {
+const wordObj = (lib, topic, wordType) => {
     //console.log(lib.wordType.topic)
-    selector = lib[wordType][topic];
+    selector = lib[topic][wordType];
     return {
         type: wordType,
         content: randWordSelector(selector)
@@ -133,25 +225,25 @@ const wordObj = (lib, wordType, topic) => {
 }
 
 // gets topic and repetition time and returns message(s)
-// default repetition time is 1
+// default repetition time is 10
 // default topic is "3. Random nonsense"
 const messageGenerator = (lib, topic, repTimes) => {
     for ( let i=0; i < repTimes; i++) {
         // define message elements
-        let mainConj_1                = wordObj(lib, 'mainConjs', 'common')
-        let mainArt_1                 = wordObj(lib, 'articles', 'common')
-        let mainAdj_1                 = wordObj(lib, 'adj', topic)
-        let mainObjNoun_1             = wordObj(lib, 'nouns', topic)
-        let mainVrb_1                 = wordObj(lib, 'verbs', topic)
-        let subClconj_1               = wordObj(lib, 'subConjs', 'common')
-        let subClSubjNoun_1           = wordObj(lib, 'nouns', topic)
-        let subClAdv1                 = wordObj(lib, 'adv', topic)
-        let subClVrb1                 = wordObj(lib, 'verbs', topic)
-        let subClObjNoun              = wordObj(lib, 'nouns', topic)
+        let mainConj_1                = wordObj(lib, 'common', 'mainConjugations')
+        let mainArt_1                 = wordObj(lib, 'common', 'articles')
+        let mainadjectivesectives_1                 = wordObj(lib, topic, 'adjectives')
+        let mainObjNoun_1             = wordObj(lib, topic, 'nouns')
+        let mainVrb_1                 = wordObj(lib, topic, 'verbs')
+        let subClconj_1               = wordObj(lib, 'common', 'subsidiaryConjugations')
+        let subClSubjNoun_1           = wordObj(lib, topic, 'nouns')
+        let subCladverbs1                 = wordObj(lib, topic, 'adverbs')
+        let subClVrb1                 = wordObj(lib, topic, 'verbs')
+        let subClObjNoun              = wordObj(lib, topic, 'nouns')
 
         // define message structure
-        const mainPart                = [ mainConj_1.content, mainArt_1.content, mainAdj_1.content, mainObjNoun_1.content, mainVrb_1.content ];
-        const subPart                 = [ subClconj_1.content, subClSubjNoun_1.content, subClAdv1.content, subClVrb1.content, subClObjNoun.content ];    
+        const mainPart                = [ mainConj_1.content, mainArt_1.content, mainadjectivesectives_1.content, mainObjNoun_1.content, mainVrb_1.content ];
+        const subPart                 = [ subClconj_1.content, subClSubjNoun_1.content, subCladverbs1.content, subClVrb1.content, subClObjNoun.content ];    
         let message                   = { mainPart, subPart };
 
         //console.log(message)
@@ -166,7 +258,7 @@ const messageGenerator = (lib, topic, repTimes) => {
     }
 }
 
-//console.log(wordObj(wordsLib, 'mainConjs', 'common'))
+//console.log(wordObj(wordsLib, 'mainConjugations', 'common'))
 
 /* FUNCTIONS TEST SECTION */
 messageGenerator(wordsLib, 'sports', 10);
