@@ -302,24 +302,21 @@ ready = prompt(readinessConfirmMsg);
 //console.log(ready);
 readyIsTrue = ( ready === 'y');
 console.log(readyIsTrue);
-    /*while(readyIsTrue) {
-        readline.question(readinessConfirmMsg, topicEntry => {
-            switch( topicEntry ) {
-                case 1: 
-                    topicEntry = 'sports';
-                    break;
-                case 2:
-                    topicEntry = 'rock';
-                    break;
-                case 3:
-                    topicEntry = 'random';
-                    break;
-                /*default:
-                    console.log('no available topic selected, please try again');
-                    continue;*/
-            /*}
-            readline.close();
-        });
-    }
-});*/
+while(readyIsTrue) {
+    topicEntry = prompt( selectTopicMsg );
+        switch( Number(topicEntry) ) {
+            case 1: 
+                topicEntry = 'sports';
+                break;
+            case 2:
+                topicEntry = 'rock';
+                break;
+            case 3:
+                topicEntry = 'random';
+                break;
+            default:
+                console.log('no available topic selected, please try again');
+                continue;
+        }
+}
 
