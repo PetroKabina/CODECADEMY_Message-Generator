@@ -1,4 +1,5 @@
-// WORDS LIBRARY
+/* WORDS LIBRARY */
+// complies a structure lib(object) -> topic(object) -> partOfSpeech(arr)
 // genarated using https://chat.openai.com/
 const wordsLib = {
     common : 
@@ -178,50 +179,55 @@ const wordsLib = {
 
 
 /* FUNCTIONS SECTION */
-// gets array and returns a random element from this array
+// gets array and return a random element from this array
 const randWordSelector = (wordsArr) => {
     randWordId = Math.floor(Math.random() * wordsArr.length);
     return wordsArr[randWordId];
 }
 
+// takes message section content and position in the entire message
 // formats words depending on their position and returns a message part as a string
-const msgPartForm = (section, part)  => {
-msgPart = section.map((word, index) => {
-    let len = section.length;
-    // initial format for a word
-    word = word.toLowerCase();
-    // format word up to its position in sentence
-    // first letter of the sentence is uppercase
-    if (index === 0 && part === 'beginning') {
-        word = word[0].toUpperCase() + word.slice(1);
-    };
-    // add a space between the words
-    if ( ( index > 0 && index < len || index != len - 1 ) && word != '') {
-        word = ' ' + word;
-    };
-    // add punctuation
-    if ( index === len - 1 && part === 'end' ) {
-        word = word + '.';
-    } else if ( index === len - 1 && part != 'end' ) {
-        word = word + ',';
-    };
+const msgPartForm = (section, position)  => {
+    msgPart = section.map((word, index) => {
+        let len = section.length;
+        // initial format for a word
+        word = word.toLowerCase();
+        // format word up to its position in sentence
+        // first letter of the sentence is uppercase
+        if (index === 0 && position === 'beginning') {
+            word = word[0].toUpperCase() + word.slice(1);
+        };
+        // add a space between the words
+        if ( ( index > 0 && index < len || index != len - 1 ) && word != '') {
+            word = ' ' + word;
+        };
+        // add punctuation
+        if ( index === len - 1 && position === 'end' ) {
+            word = word + '.';
+        } else if ( index === len - 1 && position != 'end' ) {
+            word = word + ',';
+        };
 
-    return word;
-    });
+        return word;
+    }
+);
 
     // transform an array of words to a string
     msgPart = msgPart.join('').toString();
     return msgPart;
 }
 
-// selects word object using a random selector
-const wordObj = (lib, topic, wordType) => {
-    //console.log(lib.wordType.topic)
-    selector = lib[topic][wordType];
-    return {
-        type: wordType,
-        content: randWordSelector(selector)
+// gets library, topic and part of speech 
+// returns a word as an object using a random selector
+// lib structure should be lib(object) -> topic(object) -> partOfSpeech(arr)
+const wordObj = (lib, topic, partOfSpeech) => {
+    //console.log(lib.partOfSpeech.topic)
+    selector = lib[topic][partOfSpeech];
+    word = {
+        partOfSpeech: partOfSpeech,
+        content: randWordSelector(selector),
     }
+    return word;
 }
 
 // gets topic and repetition time and returns message(s)
@@ -232,12 +238,12 @@ const messageGenerator = (lib, topic, repTimes) => {
         // define message elements
         let mainConj_1                = wordObj(lib, 'common', 'mainConjugations')
         let mainArt_1                 = wordObj(lib, 'common', 'articles')
-        let mainadjectivesectives_1                 = wordObj(lib, topic, 'adjectives')
+        let mainadjectivesectives_1   = wordObj(lib, topic, 'adjectives')
         let mainObjNoun_1             = wordObj(lib, topic, 'nouns')
         let mainVrb_1                 = wordObj(lib, topic, 'verbs')
         let subClconj_1               = wordObj(lib, 'common', 'subsidiaryConjugations')
         let subClSubjNoun_1           = wordObj(lib, topic, 'nouns')
-        let subCladverbs1                 = wordObj(lib, topic, 'adverbs')
+        let subCladverbs1             = wordObj(lib, topic, 'adverbs')
         let subClVrb1                 = wordObj(lib, topic, 'verbs')
         let subClObjNoun              = wordObj(lib, topic, 'nouns')
 
@@ -258,36 +264,59 @@ const messageGenerator = (lib, topic, repTimes) => {
     }
 }
 
+// creates user input interface
+const prompt = require("prompt-sync")();
+
 //console.log(wordObj(wordsLib, 'mainConjugations', 'common'))
 
 /* FUNCTIONS TEST SECTION */
-messageGenerator(wordsLib, 'sports', 10);
+//messageGenerator(wordsLib, 'sports', 10);
 
 /* USER INTERACTION */
-/*const readline = require('readline').createInterface({
-    input: process.stdin,
-    output: process.stdout
-  });*/
-
-/*const prompt = require ("prompt-sync")({sigint: true})
-console.log(`
-Hello friend! 
-I am a message generator and can provide you random sentences per your input.
-If you are ready for details on how to do that, press:
-'y' is you are ready
-or 'n' for seeng next time! [y/n]:
-`);
-readline.question('Who are you?', selectorYN)
-
-console.log(`
+// Messages
+const greetingMsg = 
+`Hello friend! 
+I am a message generator and can provide you random sentences per your input.`
+const readinessConfirmMsg = 
+`
+Press 'y' is you are ready
+or 'n' to exit... 
+[y/n]:
+`;
+const selectTopicMsg = 
+`
 Please select topic:
 1. Rock music
 2. Sport motivation
-3. Random nonsense
-`)
+3. Random
+`
+const repetitionTimesMsg = 
+`Please enter repetition times to see a desired number of generated sentences:`;
 
-console.log(
-`Please enter repetition times to see a desired number of generated sentences:`
-)
+let ready = null;
+let topicEntry = null;
+let repetitionTimes = null;
+console.log(greetingMsg);
+ready = prompt(readinessConfirmMsg);
+console.log(ready);
+    /*while(readyIsTrue) {
+        readline.question(readinessConfirmMsg, topicEntry => {
+            switch( topicEntry ) {
+                case 1: 
+                    topicEntry = 'sports';
+                    break;
+                case 2:
+                    topicEntry = 'rock';
+                    break;
+                case 3:
+                    topicEntry = 'random';
+                    break;
+                /*default:
+                    console.log('no available topic selected, please try again');
+                    continue;*/
+            /*}
+            readline.close();
+        });
+    }
+});*/
 
-console.log(selector)*/
