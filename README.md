@@ -4,7 +4,19 @@
 
 Message-generator provides a simple user interface that allows user to select a topic and repetition times and randomly generate a message in console. 
 
+### Prerequisites
+**Environment**
+[NodeJS](https://nodejs.org/en/download)
+[NPM](https://docs.npmjs.com/cli/v10/configuring-npm/install)
+**Libraries**: ansi-regex, prompt-sync, strip-ansi
+all of this can be installed for NodeJS envronment
+npm install prompt-sync
+**More details** in [Codecademy](https://www.codecademy.com/article/getting-user-input-in-node-js)
+
 ### Regular scenario of customer interaction:
+
+How to run the code:
+```> node.exe .\message-generator.js```
 
 Initial message:
 
