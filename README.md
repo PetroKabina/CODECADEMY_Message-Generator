@@ -10,7 +10,7 @@ Message-generator provides a simple user interface that allows user to select a 
 [NPM](https://docs.npmjs.com/cli/v10/configuring-npm/install)
 **Libraries**: ansi-regex, prompt-sync, strip-ansi
 all of this can be installed for NodeJS envronment
-npm install prompt-sync
+`npm install prompt-sync`
 **More details** in [Codecademy](https://www.codecademy.com/article/getting-user-input-in-node-js)
 
 ### Regular scenario of customer interaction:
@@ -18,41 +18,38 @@ npm install prompt-sync
 How to run the code:
 ```> node.exe .\message-generator.js```
 
-Initial message:
-
-```Hello friend! 
+**Expected execution result:**
+```node.exe .\message-generator.js
+Hello friend!
 I am a message generator and can provide you random sentences per your input.
-If you are ready for details on how to do that, press 'y' is you are ready or 'n' for seeng next time! [y/n]:
-y
-```
 
-Topic selector:
-```
+
+Press 'y' to continue
+and 'n' or ^C to exit...
+[y/n]:
+y
+
 Please select topic:
 1. Rock music
 2. Sport motivation
-3. Random nonsense
-```
+3. Random
+1
 
-Repetition times:
-```
 Please enter repetition times to see a desired number of generated sentences:
-3
-```
+4
 
-Final output:
-```
-Generated sentences:
-* If a healthy sportsman runs then he ragingly faces strengths
-* When a nervous pain enters then she healthy joggs hills
-* Whatever an unhealthy food appears then he simply struggles days
-```
+4 messages for "sports" topic:
 
-Invitation to start over:
-```
-Want some more? Press 'y' to start over or 'n' to exit! [y/n]:
-```
+ For an intense batter score, as though outfield admirably win hat trick.
+ If a rewarding opponent score, whether or not referee industriously compete inning.
+ Before fashionable batter perform, in case opponent valiantly practice backboard.
+ Before an provocative teammate participate, although strike strategically motivate hat trick.
 
+Press 'y' to continue
+and 'n' or ^C to exit...
+[y/n]:
+n
+```
 Message structure is complex - it uses one main independent clause and one subordinate clause.
 General pattern for messages generated is as follows:
 ```**(Main cl.: (*conj. + article + adj. + s. obj. noun + v.*)) + (Sub. cl.:(*conj. + s. subj. noun + adv. + v. + pl. obj. noun*))**```

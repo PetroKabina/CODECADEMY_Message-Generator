@@ -267,9 +267,8 @@ const messageGenerator = (lib, topic, repTimes) => {
 // creates user input interface
 const prompt = require("prompt-sync")({sigint: true});
 
-//console.log(wordObj(wordsLib, 'mainConjugations', 'common'))
-
 /* FUNCTIONS TEST SECTION */
+//console.log(wordObj(wordsLib, 'mainConjugations', 'common'))
 //messageGenerator(wordsLib, 'sports', 10);
 
 /* USER INTERACTION */
