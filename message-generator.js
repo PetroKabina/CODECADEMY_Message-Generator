@@ -196,7 +196,7 @@ const userMessages = {
 /*
 // gets array and return a random element from this array
 */
-const randWordSelector = (wordsArr) => {
+const randWordSelector = ( wordsArr ) => {
     randWordId = Math.floor(Math.random() * wordsArr.length);
     return wordsArr[randWordId];
 }
@@ -303,7 +303,7 @@ const prompt = ps({sigint: true});
 // due to 
 */
 const main = () => {
-    console.log( userMessages.greetingMsg );
+    console.log( userMessages.greeting );
     console.log( userMessages.readinessConfirm );
     ready = prompt().toLowerCase();
 
