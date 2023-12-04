@@ -1,31 +1,32 @@
 /* WORDS LIBRARY */
+/*
 // complies a structure lib(object) -> topic(object) -> partOfSpeech(arr)
 // genarated using https://chat.openai.com/
+*/
 const wordsLib = {
-    common : 
-        {
-            mainConjugations: [
-                'and', 'but', 'for', 'nor', 'or',
-                'so', 'yet', 'after', 'although', 'as',
-                'because', 'before', 'if', 'since', 'though',
-                'unless', 'until', 'when', 'while'
-            ],
-            subsidiaryConjugations : [
-                'after', 'although', 'as', 'as if',
-                'as long as', 'as much as', 'as soon as', 'as though',
-                'because', 'before', 'by the time', 'even if',
-                'even though', 'if', 'in case', 'in order that',
-                'in the event that', 'lest', 'now that', 'once',
-                'only', 'only if', 'provided that', 'since',
-                'so', 'supposing', 'than', 'that',
-                'though', 'till', 'unless', 'until',
-                'when', 'whenever', 'where', 'whereas',
-                'wherever', 'whether or not', 'while'
-            ],
-            articles : [
-                'a', 'an', 'the', ''
-            ],
-        },
+    common : {
+        mainConjugations: [
+            'and', 'but', 'for', 'nor', 'or',
+            'so', 'yet', 'after', 'although', 'as',
+            'because', 'before', 'if', 'since', 'though',
+            'unless', 'until', 'when', 'while'
+        ],
+        subsidiaryConjugations : [
+            'after', 'although', 'as', 'as if',
+            'as long as', 'as much as', 'as soon as', 'as though',
+            'because', 'before', 'by the time', 'even if',
+            'even though', 'if', 'in case', 'in order that',
+            'in the event that', 'lest', 'now that', 'once',
+            'only', 'only if', 'provided that', 'since',
+            'so', 'supposing', 'than', 'that',
+            'though', 'till', 'unless', 'until',
+            'when', 'whenever', 'where', 'whereas',
+            'wherever', 'whether or not', 'while'
+        ],
+        articles : [
+            'a', 'an', 'the', ''
+        ],
+    },
     sports : {
         adjectives: [
             'Adrenaline-pumping', 'Competitive', 'Fast-paced', 'Exciting', 'Fun',
@@ -174,19 +175,36 @@ const wordsLib = {
             'Understand', 'Imagine', 'Believe', 'Succeed', 'Fail',
             'Change', 'Grow', 'Remember', 'Forget', 'Give'
         ],
-        },
-    };
+    },
+};
 
+/*
+// Variables section
+*/
+let ready = null;
+let topicEntry = null;
+let repetitionTimes = null;
+const userMessages = { 
+    greeting : 'Hello friend! I am a message generator and can provide you random sentences per your input.',
+    readinessConfirm : 'Press "y" to continue\nand "n" or ^C to exit...\n[y/n]: ',
+    selectTopic : 'Please select topic:\n1. Rock music\n2. Sport motivation\n3. Random',
+    repetitionTimes : 'Please enter repetition times to see a desired number of generated sentences:',
+    noAvailableTopic : 'No available topic selected, please try again',
+}
 
 /* FUNCTIONS SECTION */
+/*
 // gets array and return a random element from this array
+*/
 const randWordSelector = (wordsArr) => {
     randWordId = Math.floor(Math.random() * wordsArr.length);
     return wordsArr[randWordId];
 }
 
+/*
 // takes message section content and position in the entire message
 // formats words depending on their position and returns a message part as a string
+*/
 const msgPartForm = (section, position)  => {
     msgPart = section.map((word, index) => {
         let len = section.length;
@@ -217,9 +235,11 @@ const msgPartForm = (section, position)  => {
     return msgPart;
 }
 
+/*
 // gets library, topic and part of speech
 // returns a word as an object using a random selector
 // lib structure should be lib(object) -> topic(object) -> partOfSpeech(arr)
+*/
 const wordObj = (lib, topic, partOfSpeech) => {
     //console.log(lib.partOfSpeech.topic)
     selector = lib[topic][partOfSpeech];
@@ -230,9 +250,11 @@ const wordObj = (lib, topic, partOfSpeech) => {
     return word;
 }
 
+/* 
 // gets topic and repetition time and returns message(s)
 // default repetition time is 10
 // default topic is "3. Random nonsense"
+*/
 const messageGenerator = (lib, topic, repTimes) => {
     for ( let i=0; i < repTimes; i++) {
         // define message elements
@@ -260,73 +282,61 @@ const messageGenerator = (lib, topic, repTimes) => {
             subPart: msgPartForm(message.subPart, 'end')
         };
             
-        console.log ( messageToDisplay.mainPart + messageToDisplay.subPart);
+        renderedMessage = messageToDisplay.mainPart + messageToDisplay.subPart;
+
+        console.log( renderedMessage );
     }
 }
 
 // creates user input interface
-const prompt = require("prompt-sync")({sigint: true});
+"use strict";
+const ps = require("prompt-sync");
+const prompt = ps({sigint: true});
 
 /* FUNCTIONS TEST SECTION */
 //console.log(wordObj(wordsLib, 'mainConjugations', 'common'))
 //messageGenerator(wordsLib, 'sports', 10);
 
 /* USER INTERACTION */
-// Messages
-let ready = null;
-let topicEntry = null;
-let repetitionTimes = null;
-const greetingMsg = 
-`
-Hello friend! 
-I am a message generator and can provide you random sentences per your input.
-`
-const readinessConfirmMsg = 
-`
-Press 'y' to continue
-and 'n' or ^C to exit... 
-[y/n]:
-`;
-const selectTopicMsg = 
-`
-Please select topic:
-1. Rock music
-2. Sport motivation
-3. Random
-`
-let repetitionTimesMsg = 
-`
-Please enter repetition times to see a desired number of generated sentences:
-`;
-console.log(greetingMsg);
-ready = prompt(readinessConfirmMsg).toLowerCase();
+/*
+// console.log() and prompt() are separated here
+// due to 
+*/
+const main = () => {
+    console.log( userMessages.greetingMsg );
+    console.log( userMessages.readinessConfirm );
+    ready = prompt().toLowerCase();
 
-// https://www.codecademy.com/article/getting-user-input-in-node-js
-//console.log(ready);
-while(ready === 'y') {
-    topicEntry = null;
-    topicEntry = prompt( selectTopicMsg );
-        switch( Number(topicEntry) ) {
-            case 1: 
-                topicEntry = 'sports';
-                break;
-            case 2:
-                topicEntry = 'rock';
-                break;
-            case 3:
-                topicEntry = 'random';
-                break;
-            default:
-                console.log('no available topic selected, please try again');
-                continue;
-        }
-    repetitionTimes = prompt( repetitionTimesMsg );
-    const generatorMsg =
-`
-${repetitionTimes} messages for "${topicEntry}" topic:
-`
-    console.log(generatorMsg);
-    messageGenerator(wordsLib, topicEntry, repetitionTimes);
-    ready = prompt(readinessConfirmMsg);
+    // https://www.codecademy.com/article/getting-user-input-in-node-js
+    //console.log(ready);
+    while(ready === 'y') {
+        console.log( userMessages.selectTopic ); 
+        topicEntry = prompt();
+            switch( Number( topicEntry ) ) {
+                case 1: 
+                    topicSelector = 'rock';
+                    break;
+                case 2:
+                    topicSelector = 'sports';
+                    break;
+                case 3:
+                    topicSelector = 'random';
+                    break;
+                default:
+                    console.log ( userMessages.noAvailableTopic );
+                    continue;
+            }
+        console.log( userMessages.repetitionTimes );
+        repetitionTimes = prompt('');
+        const result = repetitionTimes + 
+        ' messages for ' + 
+        topicSelector + 
+        ' topic:\n';
+        console.log( result );
+        messageGenerator( wordsLib, topicSelector, repetitionTimes );
+        console.log( '\n' + userMessages.readinessConfirm );
+        ready = prompt();
+    }
 }
 
+main();
