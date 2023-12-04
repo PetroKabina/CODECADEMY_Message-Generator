@@ -19,34 +19,28 @@ How to run the code:
 ```> node.exe .\message-generator.js```
 
 **Expected execution result:**
-```node.exe .\message-generator.js
-Hello friend!
-I am a message generator and can provide you random sentences per your input.
-
-
-Press 'y' to continue
-and 'n' or ^C to exit...
+```> node.exe .\message-generator.js     
+Hello friend! I am a message generator and can provide you random sentences per your input.
+Press "y" to continue
+and "n" or ^C to exit...
 [y/n]:
 y
-
 Please select topic:
 1. Rock music
 2. Sport motivation
 3. Random
-1
-
+3
 Please enter repetition times to see a desired number of generated sentences:
 4
+4 messages for random topic:
 
-4 messages for "sports" topic:
+ Until radiant sadness believe, than sadness swiftly think hope.
+ Since the lovely country play, wherever money seriously teach game.
+ Unless a incredible teacher stay, when fear rarely remember doctor.
+ Before an gorgeous death forget, as failure happily change dog.
 
- For an intense batter score, as though outfield admirably win hat trick.
- If a rewarding opponent score, whether or not referee industriously compete inning.
- Before fashionable batter perform, in case opponent valiantly practice backboard.
- Before an provocative teammate participate, although strike strategically motivate hat trick.
-
-Press 'y' to continue
-and 'n' or ^C to exit...
+Press "y" to continue
+and "n" or ^C to exit...
 [y/n]:
 n
 ```
