@@ -1,3 +1,4 @@
+"use strict";
 /* WORDS LIBRARY */
 /*
 // complies a structure lib(object) -> topic(object) -> partOfSpeech(arr)
@@ -183,6 +184,7 @@ const wordsLib = {
 */
 let ready = null;
 let topicEntry = null;
+let topicSelector = null;
 let repetitionTimes = null;
 const userMessages = { 
     greeting : 'Hello friend! I am a message generator and can provide you random sentences per your input.',
@@ -197,7 +199,7 @@ const userMessages = {
 // gets array and return a random element from this array
 */
 const randWordSelector = ( wordsArr ) => {
-    randWordId = Math.floor(Math.random() * wordsArr.length);
+    let randWordId = Math.floor(Math.random() * wordsArr.length);
     return wordsArr[randWordId];
 }
 
@@ -206,27 +208,27 @@ const randWordSelector = ( wordsArr ) => {
 // formats words depending on their position and returns a message part as a string
 */
 const msgPartForm = (section, position)  => {
-    msgPart = section.map((word, index) => {
+    let msgPart = section.map((word, index) => {
         let len = section.length;
         // initial format for a word
-        word = word.toLowerCase();
+        let formatWord = word.toLowerCase();
         // format word up to its position in sentence
         // first letter of the sentence is uppercase
         if (index === 0 && position === 'beginning') {
-            word = word[0].toUpperCase() + word.slice(1);
+            formatWord = formatWord[0].toUpperCase() + word.slice(1);
         };
         // add a space between the words
         if ( ( index > 0 && index < len || index != len - 1 ) && word != '') {
-            word = ' ' + word;
+            formatWord = ' ' + formatWord;
         };
         // add punctuation
         if ( index === len - 1 && position === 'end' ) {
-            word = word + '.';
+            formatWord = formatWord + '.';
         } else if ( index === len - 1 && position != 'end' ) {
-            word = word + ',';
+            formatWord = formatWord + ',';
         };
 
-        return word;
+        return formatWord;
     }
 );
 
@@ -242,12 +244,11 @@ const msgPartForm = (section, position)  => {
 */
 const wordObj = (lib, topic, partOfSpeech) => {
     //console.log(lib.partOfSpeech.topic)
-    selector = lib[topic][partOfSpeech];
-    word = {
+    let selector = lib[topic][partOfSpeech];
+    return {
         partOfSpeech: partOfSpeech,
         content: randWordSelector(selector),
     }
-    return word;
 }
 
 /* 
@@ -255,7 +256,7 @@ const wordObj = (lib, topic, partOfSpeech) => {
 // default repetition time is 10
 // default topic is "3. Random nonsense"
 */
-const messageGenerator = (lib, topic, repTimes) => {
+const messageGenerator = (lib, topic = 'random', repTimes = 10) => {
     for ( let i=0; i < repTimes; i++) {
         // define message elements
         let mainConj_1                = wordObj(lib, 'common', 'mainConjugations')
@@ -282,14 +283,13 @@ const messageGenerator = (lib, topic, repTimes) => {
             subPart: msgPartForm(message.subPart, 'end')
         };
             
-        renderedMessage = messageToDisplay.mainPart + messageToDisplay.subPart;
+        let renderedMessage = messageToDisplay.mainPart + messageToDisplay.subPart;
 
         console.log( renderedMessage );
     }
 }
 
 // creates user input interface
-"use strict";
 const ps = require("prompt-sync");
 const prompt = ps({sigint: true});
 
@@ -298,10 +298,6 @@ const prompt = ps({sigint: true});
 //messageGenerator(wordsLib, 'sports', 10);
 
 /* USER INTERACTION */
-/*
-// console.log() and prompt() are separated here
-// due to 
-*/
 const main = () => {
     console.log( userMessages.greeting );
     console.log( userMessages.readinessConfirm );
