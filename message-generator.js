@@ -273,7 +273,7 @@ const messageGenerator = (lib, topic = 'random', repTimes = 10) => {
         // define message structure
         const mainPart                = [ mainConj_1.content, mainArt_1.content, mainadjectivesectives_1.content, mainObjNoun_1.content, mainVrb_1.content ];
         const subPart                 = [ subClconj_1.content, subClSubjNoun_1.content, subCladverbs1.content, subClVrb1.content, subClObjNoun.content ];    
-        let message                   = { mainPart, subPart };
+        const message                   = { mainPart, subPart };
 
         //console.log(message)
         
