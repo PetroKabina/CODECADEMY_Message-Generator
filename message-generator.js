@@ -209,6 +209,7 @@ const randWordSelector = ( wordsArr ) => {
 */
 const msgPartForm = (section, position)  => {
     let msgPart = section.map((word, index) => {
+        //console.dir(word);
         let len = section.length;
         // initial format for a word
         let formatWord = word.toLowerCase();
@@ -270,6 +271,16 @@ const messageGenerator = (lib, topic = 'random', repTimes = 10) => {
         let subClVrb1                 = wordObj(lib, topic, 'verbs')
         let subClObjNoun              = wordObj(lib, topic, 'nouns')
 
+        let preMessage = [ mainConj_1, mainArt_1, mainadjectivesectives_1, mainObjNoun_1, mainVrb_1 ];
+
+        preMessage.forEach((word, index) => {
+            let nextIndex = index + 1;
+            //const vowels = 'aeuoi'.forEach()
+            if( word.partOfSpeech === 'article' ) {
+                console.log(word[nextIndex]);
+            }
+        });
+
         // define message structure
         const mainPart                = [ mainConj_1.content, mainArt_1.content, mainadjectivesectives_1.content, mainObjNoun_1.content, mainVrb_1.content ];
         const subPart                 = [ subClconj_1.content, subClSubjNoun_1.content, subCladverbs1.content, subClVrb1.content, subClObjNoun.content ];    
@@ -278,12 +289,12 @@ const messageGenerator = (lib, topic = 'random', repTimes = 10) => {
         //console.log(message)
         
         //format message
-        let messageToDisplay = {
+        let messageParts = {
             mainPart: msgPartForm(message.mainPart, 'beginning'), 
             subPart: msgPartForm(message.subPart, 'end')
         };
             
-        let renderedMessage = messageToDisplay.mainPart + messageToDisplay.subPart;
+        let renderedMessage = messageParts.mainPart + messageParts.subPart;
 
         console.log( renderedMessage );
     }
