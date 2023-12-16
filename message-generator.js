@@ -182,6 +182,8 @@ const wordsLib = {
 /*
 // Variables section
 */
+const vowels = ['a','e','u','i','o'];
+const consonants = ['q','w','r','t','y','p','s','d','f','g','h','j','k','l','z','x','c','v','b','n','m'];
 let ready = null;
 let topicEntry = null;
 let topicSelector = null;
@@ -208,28 +210,45 @@ const randWordSelector = ( wordsArr ) => {
 // formats words depending on their position and returns a message part as a string
 */
 const msgPartForm = (section, position)  => {
-    let msgPart = section.map((word, index) => {
-        //console.dir(word);
-        let len = section.length;
+    // get content from section object
+    const contentArr = [];
+    section.forEach(function(element) {
+          contentArr.push(element.content);
+    });
+    let msgPart = contentArr.map((word, index) => {
+        let len = contentArr.length;
         // initial format for a word
-        let formatWord = word.toLowerCase();
+        let formattedWord = word.toLowerCase();
         // format word up to its position in sentence
         // first letter of the sentence is uppercase
         if (index === 0 && position === 'beginning') {
-            formatWord = formatWord[0].toUpperCase() + word.slice(1);
+            formattedWord = formattedWord[0].toUpperCase() + word.slice(1);
         };
         // add a space between the words
         if ( ( index > 0 && index < len || index != len - 1 ) && word != '') {
-            formatWord = ' ' + formatWord;
+            formattedWord = ' ' + formattedWord;
         };
         // add punctuation
         if ( index === len - 1 && position === 'end' ) {
-            formatWord = formatWord + '.';
+            formattedWord = formattedWord + '.';
         } else if ( index === len - 1 && position != 'end' ) {
-            formatWord = formatWord + ',';
+            formattedWord = formattedWord + ',';
         };
+        //console.dir(section[index].content);
+        
+        if ( section[index].partOfSpeech === 'articles' && vowels.forEach( letter => { section[index + 1].content[0] === letter } )) {
+                formattedWord = '#####################';
+        }
 
-        return formatWord;
+/*        if ( section[index].partOfSpeech === 'articles') {
+            if (vowels.forEach( letter => { section[index + 1].content[0] === letter })) {
+                formattedWord = ' an';
+            } else if ( consonants.forEach( letter => { section[index + 1].content[0] === letter } ) ) {
+                formattedWord = ' a';
+            }
+*/
+
+        return formattedWord;
     }
 );
 
@@ -271,30 +290,18 @@ const messageGenerator = (lib, topic = 'random', repTimes = 10) => {
         let subClVrb1                 = wordObj(lib, topic, 'verbs')
         let subClObjNoun              = wordObj(lib, topic, 'nouns')
 
-        let preMessage = [ mainConj_1, mainArt_1, mainadjectivesectives_1, mainObjNoun_1, mainVrb_1 ];
-
-        preMessage.forEach((word, index) => {
-            let nextIndex = index + 1;
-            //const vowels = 'aeuoi'.forEach()
-            if( word.partOfSpeech === 'article' ) {
-                console.log(word[nextIndex]);
-            }
-        });
-
         // define message structure
-        const mainPart                = [ mainConj_1.content, mainArt_1.content, mainadjectivesectives_1.content, mainObjNoun_1.content, mainVrb_1.content ];
-        const subPart                 = [ subClconj_1.content, subClSubjNoun_1.content, subCladverbs1.content, subClVrb1.content, subClObjNoun.content ];    
-        const message                   = { mainPart, subPart };
-
-        //console.log(message)
+        const mainPart                = [ mainConj_1, mainArt_1, mainadjectivesectives_1, mainObjNoun_1, mainVrb_1 ];
+        const subPart                 = [ subClconj_1, subClSubjNoun_1, subCladverbs1, subClVrb1, subClObjNoun ];    
+        //const message                   = { mainPart, subPart };
         
         //format message
-        let messageParts = {
-            mainPart: msgPartForm(message.mainPart, 'beginning'), 
-            subPart: msgPartForm(message.subPart, 'end')
+        let messageToDisplay = {
+            mainPart: msgPartForm(mainPart, 'beginning'), 
+            subPart: msgPartForm(subPart, 'end')
         };
             
-        let renderedMessage = messageParts.mainPart + messageParts.subPart;
+        let renderedMessage = messageToDisplay.mainPart + messageToDisplay.subPart;
 
         console.log( renderedMessage );
     }
